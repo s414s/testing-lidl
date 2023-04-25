@@ -29,6 +29,29 @@ class PythonOrgSearch(unittest.TestCase):
         num_elements_expected = 68
         self.assertEqual(num_elements, num_elements_expected, f"El número de divs no coincide. Esperado: {num_elements_expected}, Obtenido: {num_elements}")
         print(f"El número de elementos es: {num_elements}")
+        #self.driver.quit()
+
+    def test_search_bar(self):
+        driver = self.driver
+        driver.get("https://www.lidl.es/")
+
+        time.sleep(2)
+
+        cookies_button = driver.find_element(By.CSS_SELECTOR, ".cookie-alert-extended-button")
+        cookies_button.click()
+
+        searchbar = driver.find_element(By.ID, "mainsearch-input")
+        searchbar.send_keys("sarten")
+        search_button = driver.find_element(By.CSS_SELECTOR, ".search-bar-container-button button")
+        search_button.click()
+
+        time.sleep(2)
+
+        title = driver.title
+        expected_title = "Resultado de búsqueda | Lidl"
+
+        self.assertEqual(title, expected_title, f"El título no coincide. Esperado: {expected_title}, Obtenido: {title}")
+        #self.driver.quit()
 
 
     def tearDown(self):
