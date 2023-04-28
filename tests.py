@@ -27,7 +27,7 @@ class PythonOrgSearch(unittest.TestCase):
         
         elements = driver.find_elements(By.CSS_SELECTOR, ".product-grid-box-tile")
         num_elements = len(elements)
-        num_elements_expected = 68
+        num_elements_expected = 89
         self.assertEqual(num_elements, num_elements_expected, f"El número de divs no coincide. Esperado: {num_elements_expected}, Obtenido: {num_elements}")
         print(f"El número de elementos es: {num_elements}")
 
